@@ -63,3 +63,4 @@ saas-pm-platform/
 | **frontend** | Web dashboard UI, components, Next.js |
 | **backend** | API routes, database logic, billing, metering |
 | **qa** | Testing strategy, edge cases, quality checks |
+| **market-researcher** | Competitive research, user pain analysis, market gaps |
