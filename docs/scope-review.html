@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TaskFlow - Market Research and V1 Scope</title>
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap");
+:root{--bg:#0a0a0f;--surface:#12121a;--s2:#1a1a26;--s3:#22222e;--border:#2a2a3a;--text:#e4e4ef;--dim:#8888a0;--accent:#6c5ce7;--ag:rgba(108,92,231,.15);--green:#00c853;--gd:rgba(0,200,83,.12);--red:#ff5252;--rd:rgba(255,82,82,.12);--yellow:#ffc107;--yd:rgba(255,193,7,.10);--blue:#448aff;--bd:rgba(68,138,255,.12);--cyan:#18ffff}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;gap:1.5rem;height:56px}
+.nav-logo{font-weight:800;font-size:1.1rem;background:linear-gradient(135deg,var(--accent),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:.25rem;margin-left:auto}
+.nav-links a{color:var(--dim);text-decoration:none;font-size:.8rem;padding:.4rem .75rem;border-radius:6px;font-weight:500;transition:all .2s}
+.nav-links a:hover{color:var(--text);background:var(--s2)}
+.hero{margin-top:56px;padding:4rem 2rem 3rem;text-align:center;background:linear-gradient(180deg,var(--ag) 0%,transparent 70%)}
+.hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:800;letter-spacing:-1.5px;margin-bottom:.75rem}
+.hero h1 span{background:linear-gradient(135deg,var(--accent),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:var(--dim);font-size:1.05rem;max-width:600px;margin:0 auto}
+.hero-date{display:inline-block;margin-top:1rem;font-size:.75rem;color:var(--dim);background:var(--s2);padding:.3rem .8rem;border-radius:20px;border:1px solid var(--border)}
+.container{max-width:960px;margin:0 auto;padding:0 1.5rem 4rem}
+.section{margin-top:3rem;scroll-margin-top:70px}
+.sl{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--accent);margin-bottom:.5rem}
+.st{font-size:1.6rem;font-weight:800;letter-spacing:-.5px;margin-bottom:1.25rem}
+.alert{border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:1rem;border-left:3px solid}
+.ar{background:var(--rd);border-color:var(--red)}.ag{background:var(--gd);border-color:var(--green)}.ay{background:var(--yd);border-color:var(--yellow)}.ab{background:var(--bd);border-color:var(--blue)}
+.at{font-weight:700;font-size:.95rem;margin-bottom:.4rem;display:flex;align-items:center;gap:.5rem}
+.ar .at{color:var(--red)}.ag .at{color:var(--green)}.ay .at{color:var(--yellow)}.ab .at{color:var(--blue)}
+.alert p,.alert li{font-size:.88rem;line-height:1.7}
+.alert ul{padding-left:1.2rem;margin-top:.3rem}
+.tw{overflow-x:auto;margin:1rem 0;border:1px solid var(--border);border-radius:10px;background:var(--surface)}
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+thead{background:var(--s2)}
+th{text-align:left;padding:.75rem 1rem;font-weight:600;font-size:.75rem;text-transform:uppercase;letter-spacing:1px;color:var(--dim);border-bottom:1px solid var(--border)}
+td{padding:.7rem 1rem;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--s2)}
+.tag{display:inline-block;font-size:.7rem;font-weight:600;padding:.15rem .55rem;border-radius:4px;text-transform:uppercase;letter-spacing:.5px}
+.tg{background:var(--gd);color:var(--green)}.ty{background:var(--yd);color:var(--yellow)}.tr{background:var(--rd);color:var(--red)}.tb{background:var(--bd);color:var(--blue)}.tp{background:var(--ag);color:var(--accent)}
+.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin:1.25rem 0}
+.sc{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.25rem}
+.sv{font-size:1.8rem;font-weight:800;letter-spacing:-1px;background:linear-gradient(135deg,var(--accent),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.slab{font-size:.78rem;color:var(--dim);margin-top:.25rem}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.25rem 0}
+.fc{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.25rem;transition:border-color .2s}
+.fc:hover{border-color:var(--accent)}
+.fc h4{font-size:.9rem;font-weight:700;margin-bottom:.5rem}
+.fc p{font-size:.82rem;color:var(--dim);line-height:1.6}
+.gn{font-size:.75rem;color:var(--accent);margin-top:.5rem;font-style:italic}
+.tier{margin:1.5rem 0;padding:1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:12px}
+.tier.on{border-color:var(--green)}
+.th{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
+.th h3{font-size:1.1rem;font-weight:700}
+.qc{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2rem;margin:1.25rem 0;text-align:center}
+.qc pre{font-family:"JetBrains Mono",monospace;font-size:.78rem;color:var(--dim);line-height:1.6;display:inline-block;text-align:left}
+.hl{color:var(--cyan);font-weight:600}
+.div{height:1px;background:var(--border);margin:2.5rem 0}
+.er{display:flex;align-items:center;gap:1rem;padding:.75rem 0;border-bottom:1px solid var(--border);font-size:.88rem}
+.er:last-child{border-bottom:none}
+.el{color:var(--dim);flex:1}
+.ev{font-weight:700;font-family:"JetBrains Mono",monospace}
+.ev.gd{color:var(--green)}
+.cl{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.25rem 0}
+.cc{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.25rem;text-align:center}
+.cc h4{font-size:.85rem;margin-bottom:.4rem}
+.cc p{font-size:.78rem;color:var(--dim)}
+.cc .em{font-size:1.5rem;margin-bottom:.5rem}
+@media(max-width:640px){.fg{grid-template-columns:1fr}.sg{grid-template-columns:1fr 1fr}.nav-links a{font-size:.7rem;padding:.3rem .5rem}.container{padding:0 1rem 3rem}.cl{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-logo">TaskFlow</div><div class="nav-links"><a href="#research">Research</a><a href="#competition">Competition</a><a href="#pain">Pain Points</a><a href="#gap">Gap</a><a href="#day1">Day-1 Scope</a><a href="#economics">Economics</a></div></nav>
+<div class="hero"><h1>Market Research &amp;<br><span>V1 Feature Scope</span></h1><p>WhatsApp personal assistant for everyone. Research analysis, competitive gaps, and the Day-1 feature cut.</p><div class="hero-date">June 21, 2026 &middot; Product Scoping Phase</div></div>
+<div class="container">
+<div class="section" id="research"><div class="sl">Critical Findings</div><div class="st">What the Research Uncovered</div>
+<div class="alert ar"><div class="at">🔴 Meta WhatsApp Bot Ban (Jan 2026)</div><p>Meta banned <strong>general-purpose AI chatbots</strong> on WhatsApp. However, <strong>structured task management bots are explicitly allowed.</strong></p><ul><li><strong>Hard rule:</strong> Never position as "AI assistant" or "general chatbot"</li><li><strong>Always position as:</strong> "Personal task manager / reminder service"</li><li>Every bot interaction must relate to task/reminder/schedule management</li></ul></div>
+<div class="alert ag"><div class="at">🟢 The Gap We Own</div><p>No product today combines all four. <strong>Zero direct competitors occupy this intersection:</strong></p><ul><li>WhatsApp-native natural language input</li><li>Proactive briefs + reminders + wrap-ups</li><li>Web dashboard with analytics &amp; streaks</li><li>India-first pricing (Rs 79/mo vs -8/mo globally)</li></ul></div>
+</div>
+<div class="section"><div class="sl">India Market</div><div class="st">The Numbers</div>
+<div class="sg">
+<div class="sc"><div class="sv">550M+</div><div class="slab">WhatsApp users in India</div></div>
+<div class="sc"><div class="sv">Rs 0.115</div><div class="slab">Per utility message (75% cheaper than global)</div></div>
+<div class="sc"><div class="sv">4.5B</div><div class="slab">Productivity apps market (2026)</div></div>
+<div class="sc"><div class="sv">91%</div><div class="slab">Conversational AI on WhatsApp</div></div>
+</div></div>
+<div class="div"></div>
+<div class="section" id="competition"><div class="sl">Competitive Landscape</div><div class="st">Top 3 Threats &amp; Our Defense</div>
+<div class="tw"><table><thead><tr><th>Threat</th><th>Why it matters</th><th>Our defense</th></tr></thead><tbody>
+<tr><td><strong>Meta AI (native reminders)</strong></td><td>Free, built-in, 550M users</td><td>Dashboard + analytics + streaks + wrap-ups -- things Meta AI will not build</td></tr>
+<tr><td><strong>ChatGPT Tasks</strong></td><td>Brand power, improving fast, $20/mo</td><td>WhatsApp-native vs app-locked, India pricing vs US pricing</td></tr>
+<tr><td><strong>Any.do / TickTick</strong></td><td>Existing user bases, feature-rich</td><td>They are app-first -- WhatsApp will always be secondary for them</td></tr>
+</tbody></table></div>
+<div class="st" style="margin-top:2rem">Direct Competitors</div>
+<div class="tw"><table><thead><tr><th>Competitor</th><th>What they do</th><th>Where they fall short</th></tr></thead><tbody>
+<tr><td><strong>Any.do</strong></td><td>Forward WhatsApp messages to tasks</td><td>Requires forwarding specific messages. No natural language creation.</td></tr>
+<tr><td><strong>RemindMe Bot</strong></td><td>WhatsApp reminder bot</td><td>Reminders only. No tasks, no dashboard, no analytics.</td></tr>
+<tr><td><strong>TheLibrarian.io</strong></td><td>Morning briefs via WhatsApp</td><td>Professional-focused, requires Google Workspace. Not India.</td></tr>
+<tr><td><strong>Fhynix</strong></td><td>AI planner with WA reminders</td><td>App-first. WhatsApp is just notification channel. $40/yr.</td></tr>
+<tr><td><strong>Luzia</strong></td><td>General-purpose WhatsApp AI</td><td><span class="tr tag">BANNED</span> by Meta Jan 2026 policy</td></tr>
+<tr><td><strong>Zapia Connect</strong></td><td>WhatsApp AI agent ($7M seed)</td><td>Business-focused, not personal task management</td></tr>
+</tbody></table></div></div>
+<div class="div"></div>
+<div class="section" id="pain"><div class="sl">User Research</div><div class="st">5 Pain Themes (Source-Validated)</div>
+<div class="fg">
+<div class="fc"><h4>📋 Feature Overload</h4><p>56% of workers say tool overload hurts performance weekly. Users want to add a task, not fill a form.</p><div class="gn">Our fix: Just text "gym 6pm" -- done.</div></div>
+<div class="fc"><h4>🔄 Context Switching</h4><p>Workers toggle between apps 33 times/day. Takes 9.5 min to get back into flow. 40% of productive time lost.</p><div class="gn">Our fix: Already in WhatsApp. Zero switch.</div></div>
+<div class="fc"><h4>📱 I Forget to Open the App</h4><p>Productivity apps are passive -- users must remember to open them. The tool becomes "another thing to manage."</p><div class="gn">Our fix: Bot comes to you. Morning briefs arrive proactively.</div></div>
+<div class="fc"><h4>🔒 Reminders Are Paywalled</h4><p>Todoist locks reminders behind Pro ($5/mo). Google Tasks lost location reminders. ChatGPT Tasks has timezone bugs.</p><div class="gn">Our fix: WhatsApp reminders in free tier. Always reliable.</div></div>
+</div>
+<div class="fc" style="margin:0 0 1rem"><h4>📅 No Proactive Daily Structure</h4><p>Google Gemini launched Daily Brief at I/O 2026. ChatGPT added scheduled morning digests. Both validate demand -- but Google is ecosystem-locked, ChatGPT costs $20/mo.</p><div class="gn">Our fix: Morning briefs via WhatsApp at Rs 0.115/message. Works standalone.</div></div>
+<div class="alert ay"><div class="at">⚠️ Android Battery Optimization -- India-Specific Moat</div><p>Indian Android OEMs (Xiaomi, Realme, Samsung) aggressively kill background apps. <strong>Push notifications are unreliable.</strong> WhatsApp messages always get through. This is a genuine technical advantage in India.</p></div>
+</div>
+<div class="div"></div>
+<div class="section" id="gap"><div class="sl">Opportunity</div><div class="st">Gap Analysis -- What No One Does Well</div>
+<div class="tw"><table><thead><tr><th>Gap</th><th>Who tries</th><th>Why they fall short</th><th>TaskFlow advantage</th></tr></thead><tbody>
+<tr><td><strong>WA-native task input</strong></td><td>Any.do, RemindMe</td><td>Forwarding only / reminders only</td><td>Natural language. "Gym 6pm tomorrow" just works.</td></tr>
+<tr><td><strong>Morning briefs via WA</strong></td><td>TheLibrarian.io</td><td>Pro-only. Google Workspace req.</td><td>Free tier. Standalone. India-optimized.</td></tr>
+<tr><td><strong>Daily wrap-up</strong></td><td>No one</td><td>Zero competitors offer this</td><td>"5/7 done today. Carrying over: dentist, report."</td></tr>
+<tr><td><strong>WA reminders (free)</strong></td><td>Fhynix, Any.do</td><td>App-first / Premium only</td><td>Free tier includes reminders. WA beats push in India.</td></tr>
+<tr><td><strong>Streaks + analytics</strong></td><td>TickTick, Habitica</td><td>No WhatsApp integration</td><td>Web dashboard + WhatsApp input. Best of both.</td></tr>
+<tr><td><strong>Non-professional audience</strong></td><td>Most apps</td><td>Personal tasks = afterthought</td><td>"Remind me to call mom at 8pm" is first-class.</td></tr>
+<tr><td><strong>India-first pricing</strong></td><td>No one</td><td>All price $5-8/mo for US/EU</td><td>Rs 79/mo. Cheaper than a Swiggy order.</td></tr>
+<tr><td><strong>WA bot + web dashboard</strong></td><td>No one</td><td>WA bots have no dashboards</td><td>WhatsApp for capture. Web for review. Combined.</td></tr>
+</tbody></table></div>
+<div class="qc"><pre>
+                    WhatsApp-Native Input
+                          |
+              <span class="hl">TaskFlow</span>      |   TheLibrarian.io
+              (planned)    |   (pro-only, small)
+                          |
+  Web Dashboard  ---------+----------  No Dashboard
+  + Analytics             |
+                          |
+              Fhynix      |   RemindMe Bot
+              (app+WA     |   (WA-only,
+               reminders) |   reminders only)
+                          |
+                    App-First Input</pre></div>
+<div class="qc"><pre>
+            Proactive (briefs, wrap-ups)
+                      |
+       <span class="hl">TaskFlow</span>       |    Google Gemini Daily Brief
+       (planned)      |    (Google-only, $20/mo)
+                      |
+Everyone  ------------+------------  Professionals Only
+                      |
+       TickTick       |    Todoist
+       (app-only,     |    (app-only,
+        free remind)  |    paywalled reminders)
+                      |
+            Reactive (user must open app)</pre></div>
+</div>
+<div class="div"></div>
+<div class="section" id="day1"><div class="sl">Scope Decision #3</div><div class="st">Day-1 Feature Set (Research-Informed)</div>
+<div class="tier on"><div class="th"><span class="tag tg">DAY-1</span><h3>Launch Features</h3></div>
+<p style="font-size:.85rem;color:var(--dim);margin-bottom:1rem"><strong>WhatsApp Bot</strong> -- Capture &amp; Remind</p>
+<div class="tw"><table><thead><tr><th>Feature</th><th>Why Day-1</th><th>Competitor gap</th></tr></thead><tbody>
+<tr><td><strong>Natural language task creation</strong></td><td>Core product. "Gym 6pm tomorrow" just works.</td><td>Any.do = forwarding; RemindMe = reminders-only</td></tr>
+<tr><td><strong>Smart parsing</strong> (date, time, recurrence)</td><td>Zero-friction capture</td><td>No WhatsApp bot does this well</td></tr>
+<tr><td><strong>Status updates via chat</strong></td><td>Complete the loop ("done gym")</td><td>No one does this</td></tr>
+<tr><td><strong>Quick queries</strong></td><td>"What is pending?" -- no dashboard needed</td><td>No one does this via WA</td></tr>
+<tr><td><strong>Morning brief</strong></td><td>#1 validated proactive feature</td><td>TheLibrarian.io = pro-only, not India</td></tr>
+<tr><td><strong>Deadline reminders</strong></td><td>Paywalled elsewhere; push unreliable in India</td><td>WA msgs beat push on Indian Android</td></tr>
+<tr><td><strong>Recurring tasks</strong></td><td>"Gym every weekday" -- high demand</td><td>Zero WA-bot competitors offer this</td></tr>
+</tbody></table></div>
+<p style="font-size:.85rem;color:var(--dim);margin:1.25rem 0 .75rem"><strong>Web Dashboard</strong> -- Visibility &amp; Analytics</p>
+<div class="tw"><table><thead><tr><th>Feature</th><th>Why Day-1</th><th>Role</th></tr></thead><tbody>
+<tr><td><strong>Task pipeline view</strong> (pending/done/overdue)</td><td>Visual overview WA cannot give</td><td>The moat vs Meta AI</td></tr>
+<tr><td><strong>Recurring tasks + streak tracker</strong></td><td>Gamification + habit retention</td><td>No WA bot has this</td></tr>
+<tr><td><strong>Basic completion analytics</strong></td><td>"Am I getting things done?"</td><td>Differentiator vs all WA bots</td></tr>
+<tr><td><strong>Settings panel</strong></td><td>Notification times, timezone, categories</td><td>Essential</td></tr>
+</tbody></table></div></div>
+<div class="tier"><div class="th"><span class="tag ty">V1.1</span><h3>2-4 Weeks Post-Launch</h3></div>
+<div class="tw"><table><thead><tr><th>Feature</th><th>Why not Day-1</th></tr></thead><tbody>
+<tr><td><strong>Daily wrap-up message</strong></td><td>Important but not MVP-blocking -- ships fast post-launch</td></tr>
+<tr><td><strong>Calendar view</strong></td><td>Nice-to-have; pipeline view covers most needs</td></tr>
+<tr><td><strong>Category breakdown charts</strong></td><td>Analytics depth can grow incrementally</td></tr>
+<tr><td><strong>Smart escalation (overdue nudge)</strong></td><td>Needs real usage data to tune timing</td></tr>
+<tr><td><strong>Snooze / reschedule via chat</strong></td><td>Users can say "move gym to Thursday" manually</td></tr>
+</tbody></table></div></div>
+<div class="tier"><div class="th"><span class="tag tp">V1.5 PRO</span><h3>Paid Tier</h3></div>
+<div class="tw"><table><thead><tr><th>Feature</th><th>Why Pro</th></tr></thead><tbody>
+<tr><td><strong>AI daily planner ("plan my day")</strong></td><td>High compute cost, genuine value-add</td></tr>
+<tr><td><strong>Weekly / monthly trend analytics</strong></td><td>Power user feature</td></tr>
+<tr><td><strong>Voice note to task</strong></td><td>Compute cost, convenience not necessity</td></tr>
+<tr><td><strong>Hinglish NLP support</strong></td><td>R&amp;D investment, India-specific moat</td></tr>
+<tr><td><strong>Export data (CSV / PDF)</strong></td><td>Power user need</td></tr>
+<tr><td><strong>Multiple WhatsApp numbers</strong></td><td>Cost multiplier</td></tr>
+</tbody></table></div></div>
+<div style="margin-top:1.5rem"><div class="sl">The Cut Logic</div>
+<div class="cl">
+<div class="cc"><div class="em">🚀</div><h4>Day-1 = Capture + Remind + See</h4><p>Text tasks, get reminded, see your pipeline. If this works, the product works.</p></div>
+<div class="cc"><div class="em">💜</div><h4>V1.1 = Delight</h4><p>Wrap-ups, calendar, smarter nudges. Things that make users love it.</p></div>
+<div class="cc"><div class="em">&#9889;</div><h4>Pro = Power + Cost</h4><p>Features that cost compute or give advanced insight worth paying for.</p></div>
+</div></div></div>
+<div class="div"></div>
+<div class="section" id="economics"><div class="sl">Viability</div><div class="st">Unit Economics Check</div>
+<div class="sg">
+<div class="sc"><div class="sv">Rs 0.115</div><div class="slab">Cost per WhatsApp utility message</div></div>
+<div class="sc"><div class="sv">Rs 17.25</div><div class="slab">Cost per Pro user/month (5 msgs/day)</div></div>
+<div class="sc"><div class="sv">Rs 79</div><div class="slab">Pro tier price/month</div></div>
+<div class="sc"><div class="sv">~78%</div><div class="slab">Gross margin on messaging</div></div>
+</div>
+<div class="tier" style="margin-top:1.25rem"><div class="sl">Message Cost Breakdown</div><div style="margin-top:.75rem">
+<div class="er"><span class="el">Morning brief (1/day)</span><span class="ev">Rs 0.115</span></div>
+<div class="er"><span class="el">Deadline reminders (~3/day)</span><span class="ev">Rs 0.345</span></div>
+<div class="er"><span class="el">Daily wrap-up (1/day)</span><span class="ev">Rs 0.115</span></div>
+<div class="er"><span class="el"><strong>Total per user/day</strong></span><span class="ev">Rs 0.575</span></div>
+<div class="er"><span class="el"><strong>Total per user/month (30 days)</strong></span><span class="ev">Rs 17.25</span></div>
+<div class="er"><span class="el"><strong>Pro revenue minus messaging cost</strong></span><span class="ev gd">Rs 61.75 margin</span></div>
+</div></div>
+<div class="alert ab" style="margin-top:1.25rem"><div class="at">💡 Free Tier Cost Control</div><p>Free users get limited messages (1 brief/day + basic reminders). At ~2 msgs/day = <strong>Rs 6.90/month per free user</strong>. Sustainable as long as conversion to Pro stays above ~10%.</p></div>
+<div style="margin-top:1.5rem"><div class="sl">Proposed Pricing (from research)</div>
+<div class="tw" style="margin-top:.75rem"><table><thead><tr><th>Tier</th><th>Price</th><th>What is included</th></tr></thead><tbody>
+<tr><td><span class="tag tg">FREE</span></td><td>Rs 0</td><td>10 active tasks, 1 morning brief/day, basic reminders, no dashboard</td></tr>
+<tr><td><span class="tag tp">PRO</span></td><td>Rs 79/mo or Rs 599/yr</td><td>Unlimited tasks, briefs + wrap-ups, full dashboard, streaks, analytics, recurring</td></tr>
+<tr><td><span class="tag tb">FAMILY</span></td><td>Rs 149/mo or Rs 999/yr</td><td>Pro for up to 4 people, shared task lists</td></tr>
+</tbody></table></div></div></div>
+<div class="div"></div>
+<div class="section"><div class="sl">Positioning Rules</div><div class="st">What to Avoid</div>
+<div class="fg">
+<div class="alert ar" style="margin:0"><div class="at">Do NOT say</div><ul>
+<li>"AI assistant" (triggers Meta ban)</li>
+<li>"Productivity app" (crowded, boring)</li>
+<li>"Project management tool" (too enterprise)</li>
+<li>"ChatGPT for WhatsApp" (invites ban + comparison)</li>
+</ul></div>
+<div class="alert ag" style="margin:0"><div class="at">DO say</div><ul>
+<li>"Your WhatsApp reminder buddy"</li>
+<li>"Text it. Track it. Done."</li>
+<li>"Your day, organized -- right in WhatsApp."</li>
+<li>"The to-do list that texts you back."</li>
+</ul></div>
+</div>
+<div class="alert ay" style="margin-top:1rem"><div class="at">Top 5 Things to Avoid in V1</div><ul>
+<li><strong>Do not become a general-purpose AI chatbot.</strong> Meta will ban you. Stay focused on tasks, reminders, scheduling.</li>
+<li><strong>Do not over-engineer V1.</strong> WhatsApp bot + basic web dashboard = MVP. No integrations, no team features, no AI tricks.</li>
+<li><strong>Do not price for US market.</strong> India-first or lose to free alternatives.</li>
+<li><strong>Do not ignore Meta AI threat.</strong> Build what Meta AI will not: analytics, streaks, wrap-ups, dashboard.</li>
+<li><strong>Do not target professionals only.</strong> "Everyone with WhatsApp" is the opportunity.</li>
+</ul></div></div>
+<div style="margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border);text-align:center">
+<p style="font-size:.78rem;color:var(--dim)">TaskFlow &middot; Market Research &amp; V1 Scope &middot; June 21, 2026<br>
+<span style="color:var(--accent)">Scope decisions 3-7 in progress. This document is a living draft.</span></p>
+</div>
+</div></body></html>
