@@ -1,43 +1,67 @@
-# SaaS PM Platform — Project Management SaaS with Usage-Based Pricing
+# TaskFlow — WhatsApp-First Personal Ops Assistant
 
-## Vision
-Build a project and task management platform (competing with ClickUp, Jira, Asana) where:
-- All features available to every customer — no feature-gated tiers
-- No per-user/seat pricing
-- Customers pay only for resources they actually consume
-- Pricing is transparent, fair, and significantly lower than competitors
+WhatsApp AI bot that turns chat messages into organized tasks, projects, and docs. Web dashboard for the big picture. Usage-based pricing.
 
-## Project Type
-Research & validation phase — no code yet.
+**Phase:** Product scoping (no code yet)
+**Builder:** Solo, bootstrapped, AI-assisted
+**Market:** India-first (WhatsApp-native audience)
+
+## Product Layers
+
+| Layer | What | Priority |
+|---|---|---|
+| WhatsApp Bot | Create/update tasks, smart parsing, proactive reminders & reports | Core — THE interface |
+| Web Dashboard | Kanban, calendar, project views, reports, settings | Secondary — big picture view |
+| Docs/Notes | Quick notes via chat, organized by project, searchable on web | Lightweight wiki |
+
+## V1 Scope
+
+- **Self-centric** — single user, no team features yet
+- Chat to create/manage tasks and projects
+- Bot sends: morning briefs, deadline reminders, overdue alerts, weekly reports
+- User controls all notification timing and types
+- Web dashboard for visual overview and bulk management
+- Usage-based billing (storage, AI calls, message volume)
+
+## V1 → V2 → V3
+
+- **V1:** Personal assistant (WhatsApp + PM + Docs)
+- **V2:** Team workspaces (multi-user, assignments, shared docs)
+- **V3:** Business OS (CRM + Support + Invoicing + client-facing bot)
+
+## Hard Rules
+
+1. **WhatsApp is primary, web is secondary.** Design bot-first, dashboard-second.
+2. **Smart defaults, zero setup.** Bot should work from first message — no onboarding wizard.
+3. **Proactive > reactive.** Bot should push updates, not wait to be asked.
+4. **Usage-based pricing is the USP.** Metering built from day 1, not bolted on.
+5. **India-first UX.** Hinglish support, INR pricing, WhatsApp-native patterns.
+6. **No feature-gating.** Every user gets every feature. Pay for resources consumed.
+7. **Test before claiming done.** Run the app before reporting complete.
+8. **Commit & push immediately** after changes.
 
 ## Folder Structure
+
 ```
 saas-pm-platform/
-├── CLAUDE.md              ← this file (project constitution)
-├── 00-Research-Brief.md   ← full research prompt & objectives
-├── research/              ← raw research data and notes
-│   ├── competitor-pricing.md
-│   ├── infrastructure-costs.md
-│   ├── usage-based-models.md
-│   └── market-analysis.md
-└── deliverables/          ← final polished deliverables
-    ├── 01-executive-summary.md
-    ├── 02-competitor-pricing-table.md
-    ├── 03-infrastructure-costs.md
-    ├── 04-recommended-pricing-model.md
-    ├── 05-unit-economics.md
-    ├── 06-risks-and-mitigation.md
-    ├── 07-go-no-go-recommendation.md
-    ├── 08-mvp-scope.md
-    ├── 09-technology-stack.md
-    └── 10-idea-to-launch-roadmap.md
+├── CLAUDE.md                  ← this file
+├── 00-Research-Brief.md       ← original research prompt
+├── research/                  ← market research (completed)
+├── deliverables/              ← research deliverables (completed)
+├── docs/                      ← product docs (scope, schemas, flows)
+└── .claude/
+    ├── agents/                ← 6 agents
+    ├── skills/                ← reusable workflows
+    └── hooks/                 ← automated checks
 ```
 
-## Key Assumptions
-- Solo founder, AI-assisted development (Claude agents)
-- India-market focused initially, global potential
-- Lean team, bootstrap-funded
-- MVP-first approach
+## Agent Panel
 
-## Status
-Research phase — validating product-market fit and unit economics before any code.
+| Agent | When to use |
+|---|---|
+| **product-strategist** | Feature scoping, user flows, prioritization, product decisions |
+| **system-architect** | DB schema, API design, infra, tech decisions |
+| **bot-designer** | WhatsApp conversation flows, intent parsing, proactive messaging |
+| **frontend** | Web dashboard UI, components, Next.js |
+| **backend** | API routes, database logic, billing, metering |
+| **qa** | Testing strategy, edge cases, quality checks |
