@@ -1,6 +1,6 @@
 # TaskFlow — WhatsApp Personal Assistant → Business OS
 
-WhatsApp AI bot that turns chat into organized life. Tasks, reminders, plans, notes — for personal use first, expanding to business/team SaaS later.
+WhatsApp AI bot that turns chat into organized life. Tasks, reminders, expenses, financial insights — for personal use first, expanding to business/team SaaS later.
 
 **Phase:** Product scoping (no code yet)
 **Builder:** Solo, bootstrapped, AI-assisted
@@ -10,32 +10,70 @@ WhatsApp AI bot that turns chat into organized life. Tasks, reminders, plans, no
 
 **Free personal assistant** that hooks everyone → **Paid business mode** that converts power users.
 
+TaskFlow is TWO killer things in one WhatsApp chat:
+1. **Task manager** — capture tasks, get reminders, stay organized
+2. **Expense tracker** — log spending, see where money goes, get financial insights
+
+Three input channels, one backend:
+- **WhatsApp** — capture tasks and expenses via chat
+- **Web dashboard** — visual overview, charts, analytics
+- **(Future) Mobile app** — thin client for the same backend
+
 | Stage | What | Users | Revenue |
 |---|---|---|---|
-| V1 | Personal assistant (tasks, reminders, notes, plans) | Everyone | Free (growth) |
-| V1.5 | Pro features (AI planning, reports, advanced reminders) | Power users | Freemium subscription |
+| V1 | Personal assistant (tasks + expense tracking) | Everyone | Free (growth) |
+| V1.5 | Pro features (AI planning, health score, spend analytics) | Power users | ₹79/mo subscription |
 | V2 | Business mode (projects, team workspaces, shared tasks) | Freelancers, small teams | Usage-based pricing |
 | V3 | Business OS (CRM, support, invoicing, client bot) | SMBs, agencies | Full SaaS |
 
 ## V1 Scope — Personal Assistant
 
-- **For everyone** — gym, dates, interviews, work, errands, habits, anything
+### Tasks (WhatsApp + Web)
 - Chat to create tasks, set reminders, make plans, save notes
 - Bot sends: morning briefs, reminders, overdue nudges, daily wrap-ups
-- All notification timing user-customizable
-- Web dashboard for visual overview (secondary to WhatsApp)
+- Web dashboard for pipeline view, calendar, streaks, trends
 - Zero setup — works from first message
+
+### Expenses (WhatsApp + Web)
+- Chat to log expenses ("spent 200 swiggy", "chai 50")
+- Auto-categorization with 100+ India-specific merchant rules
+- Quick spend queries ("what did I spend this week?")
+- Web dashboard for category breakdown, trends, budgets
+- Reuses tested TypeScript engine from financial-wellness-app/core/
 
 ## Hard Rules
 
 1. **WhatsApp is the product.** Web is optional. Bot must work standalone.
-2. **Zero setup, instant value.** First message = first task. No onboarding.
-3. **Proactive > reactive.** Bot pushes reminders and plans without being asked.
+2. **Zero setup, instant value.** First message = first task/expense. No onboarding.
+3. **Proactive > reactive.** Bot pushes reminders, spend alerts, and plans without being asked.
 4. **Personal first.** No team/business features in V1. Just you and your assistant.
 5. **India-first UX.** Hinglish, INR, WhatsApp-native patterns.
 6. **Free tier must be genuinely useful.** Not crippled. Growth comes from love, not gates.
 7. **Test before claiming done.** Run the app before reporting complete.
 8. **Commit & push immediately** after changes.
+
+## Financial Compliance (HARD — from financial-wellness-app)
+
+These rules are NON-NEGOTIABLE for all financial features:
+
+1. **No specific securities.** Never recommend specific stocks, funds, or instruments.
+2. **No fee for advice.** Financial features are product features, not advisory services.
+3. **No money movement.** No bank API, no UPI integration, no payment initiation.
+4. **Disclaimers required.** All projections carry "illustrative only, not financial advice."
+5. **Branding: wellness/insights/tracker** — NEVER "advisor/advice/buy/sell."
+
+## Reusable Core Engine
+
+The `financial-wellness-app/core/` TypeScript engine is platform-agnostic and will be migrated into TaskFlow's backend:
+
+- `categorizer.ts` — 100+ India merchant categorization rules
+- `evaluate.ts` — financial health score (0-100)
+- `benchmarks.ts` — budget thresholds by income band
+- `habits.ts` — habit cost projections
+- `money.ts` — Paise math utilities
+- `necessity-checker.ts` — impulse spend flagging
+- `projector.ts` — investment return projections
+- `types.ts` — Transaction, Bucket, ExpenseCategory data model
 
 ## Folder Structure
 
@@ -46,6 +84,9 @@ saas-pm-platform/
 ├── research/                  ← market research (completed)
 ├── deliverables/              ← research deliverables (completed)
 ├── docs/                      ← product docs (scope, schemas, flows)
+│   ├── v1-scope.md            ← live scope tracker
+│   ├── finance-integration.md ← how financial engine integrates
+│   └── scope-review.html      ← visual scope review
 └── .claude/
     ├── agents/                ← 7 agents (chanakya + 6 specialists)
     ├── skills/                ← reusable workflows
