@@ -42,6 +42,7 @@ CREATE TABLE tasks (
   due_at TIMESTAMPTZ,                     -- Deadline (nullable for no-deadline tasks)
   remind_at TIMESTAMPTZ,                  -- When to send reminder (nullable)
   completed_at TIMESTAMPTZ,               -- When marked done
+  reminder_sent BOOLEAN DEFAULT false,     -- Has reminder been sent for this task?
   source TEXT DEFAULT 'whatsapp',         -- whatsapp | web
   created_at TIMESTAMPTZ DEFAULT NOW(),
   updated_at TIMESTAMPTZ DEFAULT NOW()
@@ -61,6 +62,7 @@ CREATE TABLE expenses (
   category TEXT NOT NULL,                  -- food | transport | subscriptions | rent | emi | utilities | entertainment | shopping | misc
   merchant TEXT,                           -- Parsed merchant ("Swiggy", "Uber")
   description TEXT,                        -- Original message or note
+  reminder_sent BOOLEAN DEFAULT false,     -- Has reminder been sent for this task?
   source TEXT DEFAULT 'whatsapp',         -- whatsapp | web
   transaction_date DATE NOT NULL,          -- Date of expense (default today)
   created_at TIMESTAMPTZ DEFAULT NOW()

@@ -92,11 +92,11 @@ The original tech stack was designed for a generic PM SaaS. This is the revised 
 
 | Service | Monthly cost |
 |---|---|
-| Vercel (hobby/pro) | /usr/bin/bash-20 |
-| Supabase (free tier) | /usr/bin/bash |
-| WhatsApp Cloud API (1000 convos free) | /usr/bin/bash |
-| Upstash Redis (free tier) | /usr/bin/bash |
-| Claude API (Haiku for parsing) | ~-15 |
-| Sentry + BetterStack + PostHog | /usr/bin/bash |
-| Domain | ~ |
-| **Total** | **-36/mo** |
+| Vercel (hobby/pro) | $0-$20 |
+| Supabase (free tier) | $0 |
+| WhatsApp Cloud API (1000 convos free) | $0 |
+| Upstash Redis (free tier) | $0 |
+| Claude API (Haiku for parsing) | ~$5-$15 |
+| Sentry + BetterStack + PostHog | $0 |
+| Domain | ~$1 |
+| **Total** | **$6-$36/mo** |

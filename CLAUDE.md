@@ -82,13 +82,20 @@ saas-pm-platform/
 ├── CLAUDE.md                  ← this file
 ├── 00-Research-Brief.md       ← original research prompt
 ├── research/                  ← market research (completed)
-├── deliverables/              ← research deliverables (completed)
-├── docs/                      ← product docs (scope, schemas, flows)
-│   ├── v1-scope.md            ← live scope tracker
-│   ├── finance-integration.md ← how financial engine integrates
-│   └── scope-review.html      ← visual scope review
+├── deliverables/              ← original SaaS research (superseded by docs/)
+├── docs/
+│   ├── v1-scope.md            ← live scope tracker (7 decisions locked)
+│   ├── finance-integration.md ← financial engine migration plan
+│   └── architecture/          ← implementation-ready architecture
+│       ├── 01-tech-stack.md
+│       ├── 02-db-schema.md
+│       ├── 03-whatsapp-flow.md
+│       ├── 04-intent-parser.md
+│       ├── 05-api-routes.md
+│       ├── 06-background-jobs.md
+│       └── 07-project-structure.md
 └── .claude/
-    ├── agents/                ← 7 agents (chanakya + 6 specialists)
+    ├── agents/                ← 8 agents (chanakya + 7 specialists)
     ├── skills/                ← reusable workflows
     └── hooks/                 ← automated checks
 ```

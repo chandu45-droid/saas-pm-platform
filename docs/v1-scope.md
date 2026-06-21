@@ -262,11 +262,11 @@ V1 Free personal (tasks + expenses) > V1.5 Pro (AI planning, health score, analy
 
 ## Open Questions
 
-All 7 scope decisions are resolved. Remaining questions for architecture phase:
+All 7 scope decisions are resolved. Architecture questions resolved:
 
-- [ ] WhatsApp expense message format: strict or fuzzy parsing?
-- [ ] DB schema design (tasks + expenses + users)
-- [ ] WhatsApp Business API setup and webhook architecture
-- [ ] Intent parser design (task vs expense vs query)
-- [ ] Web dashboard wireframes
-- [ ] Pro tier billing integration
+- [x] WhatsApp expense message format: strict or fuzzy parsing? -> Hybrid fuzzy (see 04-intent-parser.md)
+- [x] DB schema design (tasks + expenses + users) -> 5 tables (see 02-db-schema.md)
+- [x] WhatsApp Business API setup and webhook architecture -> Meta Cloud API (see 03-whatsapp-flow.md)
+- [x] Intent parser design (task vs expense vs query) -> Regex + Haiku hybrid (see 04-intent-parser.md)
+- [ ] Web dashboard wireframes -> Not started (next phase)
+- [ ] Pro tier billing integration -> Razorpay, deferred to V1.5

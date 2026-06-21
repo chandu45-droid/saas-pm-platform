@@ -52,13 +52,13 @@ The bot must distinguish between tasks and expenses:
 
 | Source | Destination | What it does |
 |---|---|---|
-| core/src/categorizer.ts | src/lib/finance/categorizer.ts | 100+ India merchant categorization rules |
-| core/src/benchmarks.ts | src/lib/finance/benchmarks.ts | Budget thresholds by income band |
-| core/src/evaluate.ts | src/lib/finance/evaluate.ts | Financial health score (0-100) |
-| core/src/habits.ts | src/lib/finance/habits.ts | Habit cost projections |
-| core/src/money.ts | src/lib/finance/money.ts | Paise math utilities |
-| core/src/necessity-checker.ts | src/lib/finance/necessity-checker.ts | Impulse spend flagging |
-| core/src/projector.ts | src/lib/finance/projector.ts | Investment return projections |
+| core/src/categorizer.ts | src/core/categorizer.ts | 100+ India merchant categorization rules |
+| core/src/benchmarks.ts | src/core/benchmarks.ts | Budget thresholds by income band |
+| core/src/evaluate.ts | src/core/evaluate.ts | Financial health score (0-100) |
+| core/src/habits.ts | src/core/habits.ts | Habit cost projections |
+| core/src/money.ts | src/core/money.ts | Paise math utilities |
+| core/src/necessity-checker.ts | src/core/necessity-checker.ts | Impulse spend flagging |
+| core/src/projector.ts | src/core/projector.ts | Investment return projections |
 
 ### Adapt (needs changes)
 
