@@ -95,7 +95,7 @@ saas-pm-platform/
 │       ├── 06-background-jobs.md
 │       └── 07-project-structure.md
 └── .claude/
-    ├── agents/                ← 8 agents (chanakya + 7 specialists)
+    ├── agents/                ← 7 specialist agents (chanakya lives at workspace root .claude/agents/)
     ├── skills/                ← reusable workflows
     └── hooks/                 ← automated checks
 ```
@@ -104,7 +104,7 @@ saas-pm-platform/
 
 | Agent | When to use |
 |---|---|
-| **chanakya** | Orchestrator. Plans work, assigns agents, tracks progress, reviews output. Start here. |
+| **chanakya** | Cross-project orchestrator (lives at workspace root `.claude/agents/`). Start here. |
 | **product-strategist** | Feature scoping, user flows, prioritization, product decisions |
 | **system-architect** | DB schema, API design, infra, tech decisions |
 | **bot-designer** | WhatsApp conversation flows, intent parsing, proactive messaging |
