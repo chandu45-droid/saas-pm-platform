@@ -1,4 +1,4 @@
-# V1 Market Research --- TaskFlow
+# V1 Market Research --- Sortd
 
 **Date:** June 21, 2026
 **Scope:** Competitive landscape, India market context, user pain points, and positioning for a WhatsApp-based personal task assistant with web dashboard.
@@ -11,13 +11,13 @@
 
 **Meta banned general-purpose AI chatbots on WhatsApp Business API effective January 15, 2026.** Chatbots offering open-ended or assistant-style interactions (e.g., ChatGPT, Perplexity, Luzia on WhatsApp) are prohibited. However, **structured bots for specific functions---task management, reminders, appointment booking, notifications---are explicitly allowed.** The key requirement: the chatbot's role must be ancillary to a legitimate business service, not open-domain conversation. ([Source](https://respond.io/blog/whatsapp-general-purpose-chatbots-ban))
 
-**Impact on TaskFlow:** TaskFlow as a structured task/reminder bot is compliant. But it must avoid positioning as a "general-purpose AI assistant" and stay focused on task management, reminders, and scheduling.
+**Impact on Sortd:** Sortd as a structured task/reminder bot is compliant. But it must avoid positioning as a "general-purpose AI assistant" and stay focused on task management, reminders, and scheduling.
 
-| Name | What It Does | Key Features | Pricing | Rating / Users | Gap TaskFlow Can Exploit |
+| Name | What It Does | Key Features | Pricing | Rating / Users | Gap Sortd Can Exploit |
 |------|-------------|--------------|---------|---------------|--------------------------|
 | **Any.do (WhatsApp Bot)** | Task manager with WhatsApp integration for creating tasks and receiving reminders | Forward-to-create tasks, WhatsApp reminders, calendar sync, recurring tasks, AI features | Free plan (limited); Premium $2.99/mo (annual) or $8/mo monthly. WhatsApp features require Premium. | 4.4-4.6 stars; 50M+ users across platforms | WhatsApp is a secondary channel, not the primary interface. No morning briefs, no daily wrap-ups, no analytics via WhatsApp. Web-first product with WhatsApp bolted on. |
 | **RemindMe Bot** | WhatsApp-only reminder bot---forward a message, set a time, get reminded | Forward-to-remind, multi-language support, self-learning NLP | Token-based (10-100 reminders) or subscription (monthly/yearly). Pricing varies by region. | No public ratings; very small user base | Reminders only---no task management, no recurring tasks, no analytics, no morning briefs, no streaks. Pure single-function tool. |
-| **TheLibrarian.io** | WhatsApp AI personal assistant for professionals | Morning briefs, voice commands, Gmail/Drive/Calendar/Notion/Slack integration, file uploads, reminders, web search, memories | Free (100% free) | Listed on Product Hunt & BetaList; small user base, early stage | Closest competitor to TaskFlow's vision. Has morning briefs. But targets professionals, not everyone. No habit tracking, no streaks, no analytics dashboard. Relies on Google Workspace---not standalone. Google CASA certified. ([Source](https://betalist.com/startups/the-librarian)) |
+| **TheLibrarian.io** | WhatsApp AI personal assistant for professionals | Morning briefs, voice commands, Gmail/Drive/Calendar/Notion/Slack integration, file uploads, reminders, web search, memories | Free (100% free) | Listed on Product Hunt & BetaList; small user base, early stage | Closest competitor to Sortd's vision. Has morning briefs. But targets professionals, not everyone. No habit tracking, no streaks, no analytics dashboard. Relies on Google Workspace---not standalone. Google CASA certified. ([Source](https://betalist.com/startups/the-librarian)) |
 | **Zapia Connect** | AI assistant inside WhatsApp that executes real-world tasks | Contacts businesses, books appointments, calendar management, price comparison, reads/replies to messages, audio transcription | Free core; Zapia Max for premium features | $7M seed from Prosus Ventures; focused on Latin America | Latin America focused. Not a personal task manager---more of an AI agent that does errands. No task lists, no reminders, no analytics. ([Source](https://zapia.com/blog/zapia-connect-ai-assistant-for-whatsapp?lang=en)) |
 | **Luzia** | WhatsApp/Telegram AI chatbot for translation, homework, recipes, general chat | Text chat, voice transcription, translation, homework help, recipes, general assistance | Free core; Pro/Business tiers for unlimited usage | 65M users globally; top 10 app in 12 LatAm markets; $13.5M funding | **Banned under Meta's Jan 2026 policy** as a general-purpose chatbot. Not a task manager. Shows the demand for WhatsApp-native AI tools. ([Source](https://www.luzia.com/en/blog/spanish-ai-company-luzia-closes-a-new-13-5-million-funding-round-led-by-prosus-ventures)) |
 | **Fhynix** | AI daily planner with WhatsApp reminders and habit tracking | Natural language scheduling, WhatsApp reminders (24h + 10min before), habit tracking with streaks, calendar sync (Google/Apple/Outlook), voice notes | Free 3-day trial; $40/year ($3.33/mo) | Small user base; listed on App Store and Play Store | Has WhatsApp reminders + habit tracking---closest feature match. But it's an app-first product that uses WhatsApp only for outbound reminders. No conversational input via WhatsApp. No morning briefs. No web dashboard. ([Source](https://fhynix.com/best-habit-tracking-apps/)) |
@@ -31,7 +31,7 @@
 
 ## 2. Indirect Competitors (Productivity Apps)
 
-| Name | Chat / WhatsApp Support? | Proactive Reminders? | Analytics / Streaks? | Pricing | Rating | Key Weakness for TaskFlow's Target User |
+| Name | Chat / WhatsApp Support? | Proactive Reminders? | Analytics / Streaks? | Pricing | Rating | Key Weakness for Sortd's Target User |
 |------|-------------------------|---------------------|---------------------|---------|--------|----------------------------------------|
 | **Todoist** | No WhatsApp. Has AI Assistant for natural language input within app. | Push notifications; reminders locked behind Pro ($5/mo). Removed SMS reminders. | Productivity charts, completed task stats, "karma" system. No streaks. | Free (5 projects); Pro $5/mo; Business $8/mo | 4.6/5 (Capterra, 2600+ reviews); 47-50M users | No WhatsApp. Reminders are paywalled. No morning briefs. Requires opening the app. ([Source](https://propicked.com/business/todoist/pricing)) |
 | **TickTick** | No WhatsApp. No chat interface. | Free reminders (beats Todoist here). Push notifications. | Habit tracker with streaks. Basic stats per habit. | Free (generous); Premium $2.79/mo ($36/yr) | 4.6/5 features; 97% positive reviews | No WhatsApp. No morning briefs. No proactive daily summaries. Requires opening the app. ([Source](https://research.com/software/reviews/ticktick)) |
@@ -107,7 +107,7 @@
 | 56% of workers say tool overload affects their performance every week; 22% lose 2+ hours/week just managing their tool stack | [Digital Information World](https://www.digitalinformationworld.com/2025/10/too-many-tools-too-little-time-how.html) |
 | "Productivity apps add friction rather than streamline workflows" | [XDA Developers](https://www.xda-developers.com/productivity-app-drawbacks/) |
 
-**TaskFlow opportunity:** Text "gym at 6pm" to WhatsApp. Done. No app to open, no forms to fill, no tags to choose. The interface IS the simplicity.
+**Sortd opportunity:** Text "gym at 6pm" to WhatsApp. Done. No app to open, no forms to fill, no tags to choose. The interface IS the simplicity.
 
 ### Theme 2: Context Switching Kills Productivity
 
@@ -118,7 +118,7 @@
 | Context switching consumes up to 40% of productive time | [Atlassian](https://www.atlassian.com/work-management/project-management/context-switching) |
 | 45% of workers report their digital tools hinder productivity | [Digital Information World](https://www.digitalinformationworld.com/2025/10/too-many-tools-too-little-time-how.html) |
 
-**TaskFlow opportunity:** Users are already in WhatsApp. No context switch needed. Task capture happens inside the app they're already using 33+ minutes/day.
+**Sortd opportunity:** Users are already in WhatsApp. No context switch needed. Task capture happens inside the app they're already using 33+ minutes/day.
 
 ### Theme 3: "I Forget to Open the App"
 
@@ -128,7 +128,7 @@
 | The productivity tool "becomes another thing to manage, and users start feeling behind before they even start working" | [SelfManager.ai](https://selfmanager.ai/articles/when-productivity-apps-cause-stress) |
 | "I didn't need another productivity app---I just needed something that felt lighter" | [Dev.to](https://dev.to/worapon_jintajirakul/i-didnt-need-another-productivity-app-i-just-needed-something-that-felt-lighter-4a7l) |
 
-**TaskFlow opportunity:** WhatsApp is already open. Morning briefs arrive proactively. Users don't need to remember to check---TaskFlow comes to them.
+**Sortd opportunity:** WhatsApp is already open. Morning briefs arrive proactively. Users don't need to remember to check---Sortd comes to them.
 
 ### Theme 4: Reminders Are Paywalled or Broken
 
@@ -138,7 +138,7 @@
 | Google Tasks lost location-based reminders during Keep migration; users had to switch to Samsung Reminder or TickTick | [Gadget Hacks](https://android.gadgethacks.com/news/google-keep-loses-key-reminder-features-in-tasks-migration/) |
 | ChatGPT Tasks suffered "timezone miscalculations, silent failures, and lack of visibility" at launch | [Windows News](https://windowsnews.ai/article/chatgpt-scheduled-tasks-gets-dedicated-page-after-reliability-overhaul.427609) |
 
-**TaskFlow opportunity:** Reminders via WhatsApp---free tier included, highly reliable (WhatsApp message delivery > push notifications in India where aggressive battery optimization kills background apps).
+**Sortd opportunity:** Reminders via WhatsApp---free tier included, highly reliable (WhatsApp message delivery > push notifications in India where aggressive battery optimization kills background apps).
 
 ### Theme 5: No Proactive Daily Structure
 
@@ -148,7 +148,7 @@
 | ChatGPT Tasks added scheduled morning digests---but limited to 10 tasks, requires $20/mo+ subscription | [TechCrunch](https://techcrunch.com/2025/01/14/chatgpt-now-lets-you-schedule-reminders-and-recurring-tasks) |
 | TheLibrarian.io's most praised feature is morning briefs | [BetaList](https://betalist.com/startups/the-librarian) |
 
-**TaskFlow opportunity:** Morning briefs + daily wrap-ups via WhatsApp at a fraction of the cost. This is a validated, high-demand feature that no one delivers well via WhatsApp today.
+**Sortd opportunity:** Morning briefs + daily wrap-ups via WhatsApp at a fraction of the cost. This is a validated, high-demand feature that no one delivers well via WhatsApp today.
 
 ---
 
@@ -156,7 +156,7 @@
 
 | Title | URL | Key Insight |
 |-------|-----|-------------|
-| Not All Chatbots Are Banned: WhatsApp's 2026 AI Policy Explained | [respond.io](https://respond.io/blog/whatsapp-general-purpose-chatbots-ban) | Structured bots (task management, reminders) are explicitly allowed. TaskFlow is compliant. |
+| Not All Chatbots Are Banned: WhatsApp's 2026 AI Policy Explained | [respond.io](https://respond.io/blog/whatsapp-general-purpose-chatbots-ban) | Structured bots (task management, reminders) are explicitly allowed. Sortd is compliant. |
 | WhatsApp User Statistics 2026 | [Backlinko](https://backlinko.com/whatsapp-users) | 550M+ users in India, largest market globally. |
 | WhatsApp Business API Pricing India 2026 | [2Factor](https://2factor.in/v3/lp/whatsapp-business-api-pricing.php) | Utility messages cost Rs 0.115 (~$0.0014) per message---India is 75% cheaper than global rates. |
 | Chatbot Statistics 2026 | [Marketing LTB](https://marketingltb.com/blog/statistics/chatbot-statistics/) | 91% of conversational AI interactions happen on WhatsApp. $35B chatbot market by 2030. |
@@ -174,25 +174,25 @@
 
 ## 6. Gap Analysis
 
-### What no one does well that TaskFlow can own:
+### What no one does well that Sortd can own:
 
-| Gap | Who Tries | Why They Fall Short | TaskFlow's Advantage |
+| Gap | Who Tries | Why They Fall Short | Sortd's Advantage |
 |-----|----------|--------------------|--------------------|
 | **WhatsApp-native task input** (text "buy milk" and it becomes a task) | Any.do (forward-to-create), RemindMe Bot | Any.do requires forwarding specific messages; RemindMe is reminders-only. Neither supports natural language task creation from scratch. | Natural language processing in WhatsApp. "Gym 6pm tomorrow" just works. No forwarding, no forms. |
 | **Proactive morning briefs via WhatsApp** | TheLibrarian.io | Professional-focused, requires Google Workspace. Small user base. Not India-focused. | Morning brief arrives in WhatsApp at user's preferred time. Works standalone. India-optimized. |
 | **Daily wrap-up / end-of-day summary** | No one | Zero competitors offer this via WhatsApp. | "You completed 5/7 tasks today. Carrying over: dentist appointment, submit report." |
 | **Deadline reminders via WhatsApp** (not just push notifications) | Fhynix (24h + 10min before), Any.do (Premium) | Fhynix is app-first; Any.do requires Premium. Neither does smart escalation. | WhatsApp reminders that actually reach users (vs. push notifications killed by battery optimization on Android in India). |
 | **Streaks and habit analytics via web dashboard** | TickTick (in-app streaks), Habitica (gamification) | Neither has WhatsApp integration. Data lives inside the app. | Web dashboard with pipeline views, streak tracking, completion analytics---paired with WhatsApp as the input/notification layer. |
-| **Non-professional target audience** ("gym, movies, errands, interviews") | Most apps target professionals/teams | Personal life tasks are an afterthought. Categories are work-oriented. | TaskFlow is for everyone. "Remind me to call mom at 8pm" is a first-class use case. |
+| **Non-professional target audience** ("gym, movies, errands, interviews") | Most apps target professionals/teams | Personal life tasks are an afterthought. Categories are work-oriented. | Sortd is for everyone. "Remind me to call mom at 8pm" is a first-class use case. |
 | **India-first pricing and localization** | No one | All competitors price for US/EU ($5-8/mo). No Hinglish support. No IST defaults. | Priced for India (Rs 49-99/mo). IST default. Hinglish-friendly NLP. |
 | **Combined WhatsApp bot + web dashboard** | No one | WhatsApp bots have no dashboards. Dashboard apps have no WhatsApp. | WhatsApp for capture & reminders. Web dashboard for review, analytics, and planning. Best of both worlds. |
 
 ### The Core Positioning Gap:
-**No product today combines: (1) WhatsApp-native input, (2) proactive morning briefs + deadline reminders + daily wrap-ups, (3) a web dashboard with analytics/streaks, (4) India-first pricing.** TaskFlow can own this intersection.
+**No product today combines: (1) WhatsApp-native input, (2) proactive morning briefs + deadline reminders + daily wrap-ups, (3) a web dashboard with analytics/streaks, (4) India-first pricing.** Sortd can own this intersection.
 
 ---
 
-## 7. Recommendations for TaskFlow V1
+## 7. Recommendations for Sortd V1
 
 ### Must-Have Features (V1 Launch)
 
@@ -263,7 +263,7 @@
 
 3. **Battery optimization problem:** Android OEMs in India (Xiaomi, Realme, Samsung) aggressively kill background apps. Push notifications are unreliable. WhatsApp messages always get through. This is a genuine technical moat in India.
 
-4. **Meta AI competition:** Meta is building reminders into Meta AI on WhatsApp. When launched, it will be free and native. TaskFlow's moat must be: (a) structured task management (not just reminders), (b) web dashboard/analytics, (c) daily briefs/wrap-ups, (d) streaks/gamification---things Meta AI won't do.
+4. **Meta AI competition:** Meta is building reminders into Meta AI on WhatsApp. When launched, it will be free and native. Sortd's moat must be: (a) structured task management (not just reminders), (b) web dashboard/analytics, (c) daily briefs/wrap-ups, (d) streaks/gamification---things Meta AI won't do.
 
 ### What to Avoid
 
@@ -280,7 +280,7 @@
 ```
                         WhatsApp-Native Input
                               |
-                    TaskFlow   |   TheLibrarian.io
+                    Sortd   |   TheLibrarian.io
                     (planned)  |   (pro-only, small)
                               |
     Web Dashboard  -----------+------------ No Dashboard
@@ -296,7 +296,7 @@
 ```
               Proactive (briefs, wrap-ups)
                         |
-         TaskFlow       |    Google Gemini Daily Brief
+         Sortd       |    Google Gemini Daily Brief
          (planned)      |    (Google-only, $20/mo)
                         |
   Everyone  -----------+------------ Professionals Only

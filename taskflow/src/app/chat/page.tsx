@@ -11,7 +11,7 @@ type ChatMessage = {
   intent?: string;
 };
 
-const WELCOME_MESSAGE = `*Welcome to TaskFlow!* Your personal assistant.
+const WELCOME_MESSAGE = `*Welcome to Sortd!* Your personal assistant.
 
 Try typing:
   *Tasks:* "gym 6pm tomorrow", "call mom"
@@ -156,10 +156,10 @@ export default function ChatPage() {
             </svg>
           </Link>
           <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white/20 text-white text-sm font-bold">
-            TF
+            S
           </div>
           <div>
-            <div className="text-sm font-semibold text-white">TaskFlow</div>
+            <div className="text-sm font-semibold text-white">Sortd</div>
             <div className="flex items-center gap-1.5">
               <span className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse" />
               <span className="text-[11px] text-white/70">

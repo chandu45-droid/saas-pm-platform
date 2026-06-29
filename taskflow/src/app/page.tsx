@@ -118,12 +118,12 @@ function Navbar() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <div className="flex items-center gap-2.5">
           <div className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-primary-dark text-white text-sm font-bold shadow-lg shadow-primary/20">
-            TF
+            S
             <span className="absolute -top-0.5 -right-0.5 h-2.5 w-2.5 rounded-full bg-success ring-2 ring-surface" />
           </div>
           <div className="flex flex-col">
             <span className="text-base font-bold tracking-tight text-foreground leading-none">
-              TaskFlow
+              Sortd
             </span>
             <span className="text-[10px] text-muted font-medium tracking-wide">
               PERSONAL ASSISTANT
@@ -218,7 +218,7 @@ function Hero() {
 
             <p className="mt-6 text-lg text-muted leading-relaxed max-w-md">
               Tasks, expenses, reminders — just text like you normally do.
-              TaskFlow understands natural language, Hinglish included.
+              Sortd understands natural language, Hinglish included.
               No app. No forms. No learning curve.
             </p>
 
@@ -260,10 +260,10 @@ function Hero() {
               {/* Chat header */}
               <div className="flex items-center gap-3 bg-primary px-4 py-2.5">
                 <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white/20 text-white text-sm font-bold">
-                  TF
+                  S
                 </div>
                 <div className="flex-1">
-                  <div className="text-sm font-semibold text-white">TaskFlow</div>
+                  <div className="text-sm font-semibold text-white">Sortd</div>
                   <div className="flex items-center gap-1.5">
                     <span className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse" />
                     <span className="text-[10px] text-white/60">online</span>
@@ -433,7 +433,7 @@ function InteractiveDemo() {
             One chat. Three superpowers.
           </h2>
           <p className="mt-3 text-muted max-w-lg mx-auto">
-            No menus, no dropdowns, no learning curve. Just type what you want — TaskFlow figures out the rest.
+            No menus, no dropdowns, no learning curve. Just type what you want — Sortd figures out the rest.
           </p>
         </div>
 
@@ -464,10 +464,10 @@ function InteractiveDemo() {
             <div className="flex items-center justify-between bg-gradient-to-r from-primary to-primary-dark px-5 py-3">
               <div className="flex items-center gap-2.5">
                 <div className="h-8 w-8 rounded-full bg-white/20 flex items-center justify-center text-white text-xs font-bold">
-                  TF
+                  S
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-white">TaskFlow</div>
+                  <div className="text-sm font-semibold text-white">Sortd</div>
                   <div className="text-[10px] text-white/60">
                     {USE_CASES[activeTab].label} Demo
                   </div>
@@ -498,7 +498,7 @@ function InteractiveDemo() {
             {/* Bottom bar */}
             <div className="flex items-center justify-between border-t border-border/60 bg-surface px-4 py-3">
               <p className="text-[11px] text-muted">
-                ← Real responses from the TaskFlow engine
+                ← Real responses from the Sortd engine
               </p>
               <Link
                 href="/chat"
@@ -529,7 +529,7 @@ function HowItWorks() {
     },
     {
       num: "02",
-      title: "TaskFlow understands.",
+      title: "Sortd understands.",
       desc: "AI-powered intent parsing categorizes your message, extracts dates, amounts, merchants — instantly.",
       color: "from-accent to-orange-400",
       icon: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z",
@@ -600,7 +600,7 @@ function Features() {
     {
       icon: "M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9",
       title: "Proactive Reminders",
-      desc: "Morning briefs, upcoming task alerts, overdue nudges. TaskFlow pushes — you don't pull.",
+      desc: "Morning briefs, upcoming task alerts, overdue nudges. Sortd pushes — you don't pull.",
       tag: "Smart",
     },
     {
@@ -734,11 +734,11 @@ function Footer() {
         <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
           <div className="flex items-center gap-2.5">
             <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-primary-dark text-white text-xs font-bold">
-              TF
+              S
             </div>
             <div className="flex flex-col">
               <span className="text-sm font-bold text-foreground leading-none">
-                TaskFlow
+                Sortd
               </span>
               <span className="text-[9px] text-muted">Personal Assistant</span>
             </div>

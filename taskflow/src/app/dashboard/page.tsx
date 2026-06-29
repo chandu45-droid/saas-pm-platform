@@ -186,10 +186,10 @@ export default function DashboardPage() {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
           <Link href="/" className="flex items-center gap-2">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-white text-sm font-bold">
-              TF
+              S
             </div>
             <span className="text-lg font-semibold text-foreground">
-              TaskFlow
+              Sortd
             </span>
           </Link>
           <div className="flex items-center gap-3">

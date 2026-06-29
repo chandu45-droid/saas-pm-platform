@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TaskFlow — Your WhatsApp Personal Assistant",
+  title: "Sortd — Your WhatsApp Personal Assistant",
   description:
     "Turn WhatsApp into your personal productivity hub. Tasks, reminders, expense tracking — all in one chat. India-first, zero setup.",
   keywords: [

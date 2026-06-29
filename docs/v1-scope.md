@@ -118,7 +118,7 @@ Why not just use Todoist + Walnut?
 
 ## Decision 6: Naming and Positioning
 
-**Name:** TBD ("TaskFlow" is the working name but does not reflect the finance angle. Final name to be picked closer to launch.)
+**Name:** TBD ("Sortd" is the working name but does not reflect the finance angle. Final name to be picked closer to launch.)
 
 **Positioning (locked):**
 
@@ -256,8 +256,8 @@ V1 Free personal (tasks + expenses) > V1.5 Pro (AI planning, health score, analy
 | - | Primary interface | WhatsApp bot (capture + remind) | 2026-06-21 |
 | - | Secondary interface | Web dashboard (visibility + analytics) | 2026-06-21 |
 | - | V1 revenue | Free (growth-first) | 2026-06-21 |
-| - | Financial tracking merge | Absorb financial-wellness-app into TaskFlow (Option A) | 2026-06-21 |
-| - | Standalone finance app | Killed, all features fold into TaskFlow | 2026-06-21 |
+| - | Financial tracking merge | Absorb financial-wellness-app into Sortd (Option A) | 2026-06-21 |
+| - | Standalone finance app | Killed, all features fold into Sortd | 2026-06-21 |
 | - | Financial compliance | Carry forward all hard rules | 2026-06-21 |
 
 ## Open Questions

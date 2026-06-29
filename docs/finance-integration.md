@@ -1,19 +1,19 @@
 # Financial Tracking Integration Plan
 
-**Decision:** Absorb financial-wellness-app into TaskFlow (Option A)
+**Decision:** Absorb financial-wellness-app into Sortd (Option A)
 **Date:** 2026-06-21
 **Status:** Planned
 
 ## What Changed
 
-The standalone financial-wellness-app (local-only React Native app) is now killed as a separate product. All financial tracking features are absorbed into TaskFlow.
+The standalone financial-wellness-app (local-only React Native app) is now killed as a separate product. All financial tracking features are absorbed into Sortd.
 
 **Before:** Two separate products
-- TaskFlow = WhatsApp task manager
+- Sortd = WhatsApp task manager
 - Financial Wellness App = local-only expense tracker
 
 **After:** One unified product
-- TaskFlow = WhatsApp personal assistant (tasks + expenses + financial insights)
+- Sortd = WhatsApp personal assistant (tasks + expenses + financial insights)
 
 ## Architecture: Three Input Channels, One Backend
 
