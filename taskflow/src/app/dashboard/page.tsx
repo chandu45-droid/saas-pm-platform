@@ -158,6 +158,7 @@ export default function DashboardPage() {
   const fetchData = useCallback(async () => {
     try {
       setLoading(true);
+      // Demo mode: no userId needed — server auto-detects demo mode when DATABASE_URL is unset
       const res = await fetch(
         `/api/dashboard?taskFilter=${taskFilter}&expensePeriod=${expensePeriod}`
       );
@@ -192,11 +193,14 @@ export default function DashboardPage() {
             </span>
           </Link>
           <div className="flex items-center gap-3">
-            <span className="text-xs text-muted hidden sm:block">
-              Synced with WhatsApp
-            </span>
+            <Link
+              href="/chat"
+              className="rounded-full bg-primary px-4 py-1.5 text-xs font-semibold text-white hover:bg-primary-dark transition-colors"
+            >
+              Chat Demo
+            </Link>
             <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary text-xs font-semibold">
-              U
+              D
             </div>
           </div>
         </div>
@@ -393,7 +397,7 @@ export default function DashboardPage() {
                   <div className="px-4 py-12 text-center">
                     <p className="text-sm text-muted">No tasks yet</p>
                     <p className="text-xs text-muted/70 mt-1">
-                      Send a message on WhatsApp to create your first task
+                      <Link href="/chat" className="text-primary hover:underline">Open the chat</Link> and try: &quot;gym 6pm tomorrow&quot;
                     </p>
                   </div>
                 )}
@@ -514,7 +518,7 @@ export default function DashboardPage() {
                   <div className="px-4 py-8 text-center">
                     <p className="text-sm text-muted">No expenses yet</p>
                     <p className="text-xs text-muted/70 mt-1">
-                      &quot;spent 200 swiggy&quot; on WhatsApp
+                      <Link href="/chat" className="text-primary hover:underline">Open the chat</Link> and try: &quot;spent 200 swiggy&quot;
                     </p>
                   </div>
                 )}
@@ -524,12 +528,10 @@ export default function DashboardPage() {
             {/* Quick tip */}
             <div className="rounded-xl border border-primary/20 bg-primary/5 p-4">
               <p className="text-xs font-semibold text-primary mb-1">
-                Quick tip
+                Demo Mode
               </p>
               <p className="text-xs text-muted leading-relaxed">
-                All data here syncs from WhatsApp. Just text TaskFlow to
-                create tasks or log expenses. Try: &quot;gym tomorrow 6pm&quot;
-                or &quot;chai 50&quot;
+                Data syncs from the chat interface. <Link href="/chat" className="text-primary font-medium hover:underline">Open the chat</Link> to create tasks and log expenses. Changes appear here instantly.
               </p>
             </div>
           </div>

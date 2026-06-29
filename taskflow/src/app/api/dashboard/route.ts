@@ -1,18 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
-import { db } from "@/db/index";
-import { tasks, expenses } from "@/db/schema";
-import { eq, and, desc, gte, lte, sql } from "drizzle-orm";
+import { getDemoStore } from "@/lib/demo/store";
+
+// Only import DB when actually needed (lazy)
+const isDemoMode = !process.env.DATABASE_URL;
 
 /**
  * GET /api/dashboard?userId=...&taskFilter=pending&expensePeriod=this_month
  *
  * Returns aggregated dashboard data: tasks + expenses + stats.
- * For now, userId is passed as a query param.
- * TODO: Replace with JWT session auth from web_sessions table.
+ * In demo mode (no DATABASE_URL), serves from the in-memory store.
  */
 export async function GET(req: NextRequest) {
   const { searchParams } = req.nextUrl;
-  const userId = searchParams.get("userId");
   const taskFilter = (searchParams.get("taskFilter") ?? "pending") as
     | "pending"
     | "today"
@@ -21,7 +20,13 @@ export async function GET(req: NextRequest) {
   const expensePeriod = (searchParams.get("expensePeriod") ??
     "this_month") as "today" | "this_week" | "this_month";
 
-  // If no userId provided, return empty state (for demo/unauthenticated view)
+  // ── Demo mode: serve from in-memory store ──
+  if (isDemoMode) {
+    return serveDemoDashboard(taskFilter, expensePeriod);
+  }
+
+  // ── Production mode: serve from PostgreSQL ──
+  const userId = searchParams.get("userId");
   if (!userId) {
     return NextResponse.json({
       tasks: [],
@@ -38,10 +43,15 @@ export async function GET(req: NextRequest) {
   }
 
   try {
+    // Dynamic imports — only loaded when DATABASE_URL is set
+    const { db } = await import("@/db/index");
+    const { tasks, expenses } = await import("@/db/schema");
+    const { eq, and, desc, gte, lte, sql } = await import("drizzle-orm");
+
     const now = new Date();
 
     // --- Fetch tasks based on filter ---
-    const taskResults = await fetchTasks(userId, taskFilter, now);
+    const taskResults = await fetchTasks(db, tasks, userId, taskFilter, now, { eq, and, desc, gte, lte });
 
     // --- Fetch task stats (always full counts, not filtered) ---
     const [pendingCount, doneCount, overdueCount] = await Promise.all([
@@ -49,12 +59,12 @@ export async function GET(req: NextRequest) {
         .select({ count: sql<number>`count(*)::int` })
         .from(tasks)
         .where(and(eq(tasks.userId, userId), eq(tasks.status, "pending")))
-        .then((r) => r[0]?.count ?? 0),
+        .then((r: any[]) => r[0]?.count ?? 0),
       db
         .select({ count: sql<number>`count(*)::int` })
         .from(tasks)
         .where(and(eq(tasks.userId, userId), eq(tasks.status, "done")))
-        .then((r) => r[0]?.count ?? 0),
+        .then((r: any[]) => r[0]?.count ?? 0),
       db
         .select({ count: sql<number>`count(*)::int` })
         .from(tasks)
@@ -65,7 +75,7 @@ export async function GET(req: NextRequest) {
             lte(tasks.dueAt, now)
           )
         )
-        .then((r) => r[0]?.count ?? 0),
+        .then((r: any[]) => r[0]?.count ?? 0),
     ]);
 
     // --- Fetch expenses ---
@@ -138,13 +148,50 @@ export async function GET(req: NextRequest) {
   }
 }
 
+// ── Demo dashboard from in-memory store ──
+
+function serveDemoDashboard(
+  taskFilter: string,
+  expensePeriod: string
+) {
+  const store = getDemoStore();
+
+  const taskResults = store.getTasksByFilter(taskFilter);
+  const allTasks = store.getTasksByFilter("all");
+  const pendingTasks = store.getTasksByFilter("pending");
+  const overdueTasks = store.getTasksByFilter("overdue");
+  const doneCount = allTasks.filter((t) => t.status === "done").length;
+
+  const { totalPaise: totalSpentPaise, count: expenseCount } =
+    store.getTotalExpenses(expensePeriod);
+  const categoryBreakdown = store.getExpensesByCategory(expensePeriod);
+  const expenseResults = store.getExpensesByPeriod(expensePeriod).slice(0, 20);
+
+  return NextResponse.json({
+    tasks: taskResults,
+    expenses: expenseResults,
+    stats: {
+      pendingTasks: pendingTasks.length,
+      doneTasks: doneCount,
+      overdueTasks: overdueTasks.length,
+      totalSpentPaise,
+      expenseCount,
+      categoryBreakdown,
+    },
+  });
+}
+
 // --- Helpers ---
 
 async function fetchTasks(
+  db: any,
+  tasks: any,
   userId: string,
   filter: string,
-  now: Date
+  now: Date,
+  ops: any
 ) {
+  const { eq, and, gte, lte } = ops;
   const startOfDay = new Date(now);
   startOfDay.setHours(0, 0, 0, 0);
   const endOfDay = new Date(now);
@@ -185,13 +232,15 @@ async function fetchTasks(
         )
         .orderBy(tasks.dueAt);
 
-    default:
+    default: {
+      const { desc } = await import("drizzle-orm");
       return db
         .select()
         .from(tasks)
         .where(eq(tasks.userId, userId))
         .orderBy(desc(tasks.createdAt))
         .limit(50);
+    }
   }
 }
 
