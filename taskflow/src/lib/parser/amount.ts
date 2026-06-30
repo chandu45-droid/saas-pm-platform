@@ -19,13 +19,13 @@ interface AmountMatch {
  */
 const AMOUNT_PATTERNS: RegExp[] = [
   // ₹200 or Rs200 or Rs.200 or rs 200 (with optional decimals)
-  /(?:₹|rs\.?\s*)(\d{1,3}(?:,\d{3})*(?:\.\d{1,2})?)\s*(?:k\b)?/gi,
-  // 200rs or 200 rs or 200₹
-  /(\d{1,3}(?:,\d{3})*(?:\.\d{1,2})?)\s*(?:₹|rs\.?|rupees?)\s*(?:k\b)?/gi,
+  /(?:₹|rs\.?\s*)(\d+(?:,\d{2,3})*(?:\.\d{1,2})?)\s*(?:k\b)?/gi,
+  // 200rs or 200 rs or 200₹ or 1500rs
+  /(\d+(?:,\d{2,3})*(?:\.\d{1,2})?)\s*(?:₹|rs\.?|rupees?)\s*(?:k\b)?/gi,
   // 2.5k or 2k (with optional prefix ₹/Rs)
   /(?:₹|rs\.?\s*)?(\d+(?:\.\d{1,2})?)\s*k\b/gi,
-  // Plain number (200, 1500, 1,500) — only if 2+ digits
-  /\b(\d{1,3}(?:,\d{3})*(?:\.\d{1,2})?)\b/g,
+  // Plain number (200, 1500, 15000, 1,500) — any digit count
+  /\b(\d+(?:,\d{2,3})*(?:\.\d{1,2})?)\b/g,
 ];
 
 /**
@@ -36,7 +36,7 @@ export function extractAmount(message: string): AmountMatch | null {
   const normalized = message.toLowerCase().trim();
 
   // Try ₹/Rs prefixed amounts first (highest confidence)
-  const prefixed = /(?:₹|rs\.?\s*)(\d{1,3}(?:,\d{3})*(?:\.\d{1,2})?)\s*(k)?/i;
+  const prefixed = /(?:₹|rs\.?\s*)(\d+(?:,\d{2,3})*(?:\.\d{1,2})?)\s*(k)?/i;
   const prefixMatch = prefixed.exec(normalized);
   if (prefixMatch) {
     const num = parseNumber(prefixMatch[1]);
@@ -48,8 +48,8 @@ export function extractAmount(message: string): AmountMatch | null {
     };
   }
 
-  // Try suffixed amounts (200rs)
-  const suffixed = /(\d{1,3}(?:,\d{3})*(?:\.\d{1,2})?)\s*(?:₹|rs\.?|rupees?)/i;
+  // Try suffixed amounts (200rs, 1500rs)
+  const suffixed = /(\d+(?:,\d{2,3})*(?:\.\d{1,2})?)\s*(?:₹|rs\.?|rupees?)/i;
   const suffixMatch = suffixed.exec(normalized);
   if (suffixMatch) {
     const num = parseNumber(suffixMatch[1]);
@@ -73,7 +73,7 @@ export function extractAmount(message: string): AmountMatch | null {
   }
 
   // Plain number — only if 2+ digits and looks like money
-  const plainPattern = /\b(\d{2,3}(?:,\d{3})*(?:\.\d{1,2})?)\b/;
+  const plainPattern = /\b(\d+(?:,\d{2,3})*(?:\.\d{1,2})?)\b/;
   const plainMatch = plainPattern.exec(normalized);
   if (plainMatch) {
     const num = parseNumber(plainMatch[1]);
@@ -103,7 +103,7 @@ export function extractAllAmounts(message: string): AmountMatch[] {
 
   // Combined pattern that matches all amount forms
   const allPattern =
-    /(?:₹|rs\.?\s*)(\d{1,3}(?:,\d{3})*(?:\.\d{1,2})?)\s*(k)?|(\d{1,3}(?:,\d{3})*(?:\.\d{1,2})?)\s*(?:₹|rs\.?|rupees?)|(\d+(?:\.\d{1,2})?)\s*k\b|\b(\d{2,3}(?:,\d{3})*(?:\.\d{1,2})?)\b/gi;
+    /(?:₹|rs\.?\s*)(\d+(?:,\d{2,3})*(?:\.\d{1,2})?)\s*(k)?|(\d+(?:,\d{2,3})*(?:\.\d{1,2})?)\s*(?:₹|rs\.?|rupees?)|(\d+(?:\.\d{1,2})?)\s*k\b|\b(\d+(?:,\d{2,3})*(?:\.\d{1,2})?)\b/gi;
 
   let match: RegExpExecArray | null;
   while ((match = allPattern.exec(normalized)) !== null) {
