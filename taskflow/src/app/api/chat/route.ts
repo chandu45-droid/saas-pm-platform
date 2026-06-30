@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { parseWithRules } from "@/lib/parser/rules";
+import { parseMultiExpense } from "@/lib/parser/multi-expense";
 import {
   buildResponse,
   buildHelpMessage,
@@ -27,6 +28,41 @@ export async function POST(req: NextRequest) {
 
     const text = message.trim();
     const store = getDemoStore();
+
+    // Try multi-expense parse first (e.g. "200 uber 150 swiggy")
+    const multiExpenses = parseMultiExpense(text);
+    if (multiExpenses && multiExpenses.length > 1) {
+      store.logMessage({ direction: "inbound", body: text, intent: "multi_expense_log" });
+
+      const createdExpenses = multiExpenses.map((me) => {
+        const dateStr = me.date
+          ? formatDateForStore(me.date)
+          : formatDateForStore(new Date());
+        return store.createExpense({
+          amountPaise: me.amountPaise,
+          category: me.category,
+          merchant: me.merchant,
+          description: text,
+          transactionDate: dateStr,
+          source: "web",
+        });
+      });
+
+      const { totalPaise } = store.getTotalExpenses("today");
+      const result: ActionResult = {
+        action: "multi_expense_logged",
+        expenses: createdExpenses as any[],
+        todayTotalPaise: totalPaise,
+      };
+      const reply = buildResponse(result);
+      store.logMessage({ direction: "outbound", body: reply, intent: "multi_expense_log" });
+
+      return NextResponse.json({
+        reply,
+        intent: "multi_expense_log",
+        confidence: "high",
+      });
+    }
 
     // Parse intent with regex-only (no LLM)
     const intent = parseWithRules(text);
@@ -87,7 +123,6 @@ function executeDemoIntent(intent: ParsedIntent, rawMessage: string): ActionResu
         source: "web",
       });
       const pendingCount = store.countPending();
-      // Cast to match ActionResult's Task type expectations
       return {
         action: "task_created",
         task: task as any,
@@ -191,7 +226,7 @@ function executeDemoIntent(intent: ParsedIntent, rawMessage: string): ActionResu
       return { action: "error", message: buildHelpMessage() };
 
     case "unknown":
-      return { action: "error", message: buildUnknownMessage() };
+      return { action: "error", message: buildUnknownMessage(intent.raw) };
 
     default:
       return { action: "error", message: buildUnknownMessage() };

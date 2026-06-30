@@ -14,10 +14,10 @@ interface DateMapping {
 }
 
 const DATE_MAPPINGS: DateMapping[] = [
-  { pattern: /\b(aaj|today)\b/i, offsetDays: 0 },
-  { pattern: /\b(kal|tomorrow)\b/i, offsetDays: 1 },
-  { pattern: /\b(parso|day\s*after\s*tomorrow)\b/i, offsetDays: 2 },
-  { pattern: /\b(yesterday)\b/i, offsetDays: -1 },
+  { pattern: /\b(aaj|today|abhi)\b/i, offsetDays: 0 },
+  { pattern: /\b(kal|tomorrow|tmrw|tmrw|tmw)\b/i, offsetDays: 1 },
+  { pattern: /\b(parso|parson|day\s*after\s*tomorrow)\b/i, offsetDays: 2 },
+  { pattern: /\b(yesterday|kal\s*raat)\b/i, offsetDays: -1 },
 ];
 
 // ---------------------------------------------------------------------------
@@ -75,19 +75,19 @@ const PERIOD_MAPPINGS: { pattern: RegExp; period: TimePeriod }[] = [
 // ---------------------------------------------------------------------------
 
 export const EXPENSE_KEYWORDS =
-  /\b(spent|paid|expense|kharcha|kharach|bill|cost|lagaa|laga|diya|diye|kharch)\b/i;
+  /\b(spent|paid|expense|kharcha|kharach|bill|cost|lagaa|laga|diya|diye|kharch|udhar|bhara|bharaa|de\s*diya|paisa\s*diya|amount|fees|fee|charge|charged)\b/i;
 
 export const DONE_PATTERNS =
-  /\b(done|finished|completed|complete|ho\s*gaya|ho\s*gya|kar\s*diya|kar\s*liya|hogaya|hogya|kardiya|karliya)\b/i;
+  /\b(done|finished|completed|complete|ho\s*gaya|ho\s*gya|kar\s*diya|kar\s*liya|hogaya|hogya|kardiya|karliya|khatam|finish|✅|✔️|checked)\b/i;
 
 export const SKIP_PATTERNS =
-  /\b(skip|cancel|nahi|mat|chhod|chod|cancel\s*kar|skip\s*kar|hatao|hata\s*do)\b/i;
+  /\b(skip|cancel|nahi|mat|chhod|chod|cancel\s*kar|skip\s*kar|hatao|hata\s*do|nahi\s*karna|rehne\s*de|rehne\s*do|ignore|drop)\b/i;
 
 export const QUERY_PATTERNS =
-  /\b(what|how\s*much|kitna|list|show|dikhao|batao|kya|pending|left|overdue|remaining)\b/i;
+  /\b(what|how\s*much|kitna|list|show|dikhao|batao|kya|pending|left|overdue|remaining|status|kahan|where|dekh|check|view)\b/i;
 
 export const HELP_PATTERNS =
-  /^(help|h|start|\?|hi|hello|hey|hii|kya\s*kar\s*sakte\s*ho|what\s*can\s*you\s*do)$/i;
+  /^(help|h|start|\?|hi|hello|hey|hii|hiii|yo|sup|kya\s*kar\s*sakte\s*ho|what\s*can\s*you\s*do|how\s*does\s*this\s*work|kaise\s*kaam\s*karta|commands|menu)$/i;
 
 export const PROFILE_NAME_PATTERN =
   /\b(?:call\s*me|my\s*name\s*is|mera\s*naam|naam)\s+(.+)/i;

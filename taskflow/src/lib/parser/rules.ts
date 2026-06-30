@@ -32,7 +32,7 @@ const CATEGORY_KEYWORDS: { pattern: RegExp; category: string }[] = [
 ];
 
 const KNOWN_MERCHANTS =
-  /\b(swiggy|zomato|uber|ola|rapido|netflix|hotstar|amazon|flipkart|myntra|bigbasket|blinkit|zepto|dunzo|croma|nykaa|meesho|ajio|dominos|pizza\s*hut|mcdonalds|kfc|starbucks|subway|burger\s*king|chaayos|spotify|jiocinema|sonyliv|zee5)\b/i;
+  /\b(swiggy|zomato|uber|ola|rapido|netflix|hotstar|amazon|flipkart|myntra|bigbasket|blinkit|zepto|dunzo|croma|nykaa|meesho|ajio|dominos|pizza\s*hut|mcdonalds|kfc|starbucks|subway|burger\s*king|chaayos|spotify|jiocinema|sonyliv|zee5|instamart|jiomart|grofers|paytm|phonepe|gpay|google\s*pay|youtube\s*premium|prime|disney|haldiram|ccd|third\s*wave|blue\s*tokai)\b/i;
 
 const EXPENSE_QUERY_SIGNALS =
   /\b(spend|spent|kharcha|expense|paisa|paise|money|rs|rupee|cost|kitna\s*laga|kitna\s*kharcha)\b/i;
