@@ -31,7 +31,6 @@ next-env.d.ts
 
 # Internal / Claude workspace
 CLAUDE.md
-progress.md
 .claude/
 00-Research-Brief.md
 taskflow-status-report.html
